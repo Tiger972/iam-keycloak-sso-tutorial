@@ -43,10 +43,6 @@ Mettre en œuvre une architecture **SSO (Single Sign-On)** complète basée sur 
 iam-keycloak-sso-tutorial/
 ├── README.md                          # Ce fichier
 ├── docs/
-│   ├── 01-keycloak-setup.md          # Déploiement Docker + config realm/client/user
-│   ├── 02-jwt-token.md               # Récupération JWT (curl + Postman)
-│   ├── 03-jwt-decode.md              # Décodage payload + explication claims
-│   ├── 04-react-app.md               # SPA React avec login Keycloak
 │   └── screenshots/                  # Captures d'écran
 ├── react-app/                        # SPA React (Vite + keycloak-js)
 ├── postman/                          # Collection Postman OAuth/OIDC
@@ -84,17 +80,6 @@ npm run dev
 ```
 
 Ouvrir [http://localhost:5173](http://localhost:5173).
-
----
-
-## 📚 Documentation détaillée
-
-| Étape | Document | Contenu |
-|-------|----------|---------|
-| 1 | [01-keycloak-setup.md](docs/01-keycloak-setup.md) | Déploiement Docker, realm, clients, utilisateur |
-| 2 | [02-jwt-token.md](docs/02-jwt-token.md) | Récupération du JWT (curl + Postman) |
-| 3 | [03-jwt-decode.md](docs/03-jwt-decode.md) | Décodage et analyse du JWT (jwt.io) |
-| 4 | [04-react-app.md](docs/04-react-app.md) | SPA React avec Authorization Code + PKCE |
 
 ---
 
