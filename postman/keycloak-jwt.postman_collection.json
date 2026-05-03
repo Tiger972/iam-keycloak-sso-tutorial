@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "Keycloak JWT - IAM M1-CSM 2026",
+    "description": "Collection de tests OAuth 2.0 / OIDC sur Keycloak.\n\nAuteur : PIQUIONNE Andy\nCours : Open source IAM solutions and Cloud Computing\n\nVariables à configurer dans l'environnement :\n- keycloak_url (ex: http://localhost:8080)\n- realm (ex: demo-realm)\n- client_id (ex: curl-client)\n- client_secret (à récupérer dans Keycloak)\n- username (ex: testuser)\n- password (ex: Test1234!)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "keycloak_url", "value": "http://localhost:8080" },
+    { "key": "realm", "value": "demo-realm" },
+    { "key": "client_id", "value": "curl-client" },
+    { "key": "client_secret", "value": "REMPLACER_PAR_LE_SECRET" },
+    { "key": "username", "value": "testuser" },
+    { "key": "password", "value": "Test1234!" },
+    { "key": "access_token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Get JWT (Password Grant)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status 200', () => pm.response.to.have.status(200));",
+              "const json = pm.response.json();",
+              "pm.test('access_token returned', () => pm.expect(json.access_token).to.be.a('string'));",
+              "pm.collectionVariables.set('access_token', json.access_token);",
+              "console.log('Access Token stored in collection variable.');"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "client_id", "value": "{{client_id}}" },
+            { "key": "client_secret", "value": "{{client_secret}}" },
+            { "key": "username", "value": "{{username}}" },
+            { "key": "password", "value": "{{password}}" },
+            { "key": "grant_type", "value": "password" }
+          ]
+        },
+        "url": {
+          "raw": "{{keycloak_url}}/realms/{{realm}}/protocol/openid-connect/token",
+          "host": ["{{keycloak_url}}"],
+          "path": ["realms", "{{realm}}", "protocol", "openid-connect", "token"]
+        },
+        "description": "Récupère un access_token via le Resource Owner Password Credentials Grant.\n\n⚠️ ATTENTION : ce grant est déprécié par OAuth 2.1. À ne pas utiliser en production. Il est utilisé ici uniquement à des fins pédagogiques."
+      }
+    },
+    {
+      "name": "2. UserInfo (avec access_token)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "{{keycloak_url}}/realms/{{realm}}/protocol/openid-connect/userinfo",
+          "host": ["{{keycloak_url}}"],
+          "path": ["realms", "{{realm}}", "protocol", "openid-connect", "userinfo"]
+        },
+        "description": "Endpoint OIDC standard renvoyant les informations de l'utilisateur authentifié à partir de son access token."
+      }
+    },
+    {
+      "name": "3. Token Introspection",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "client_id", "value": "{{client_id}}" },
+            { "key": "client_secret", "value": "{{client_secret}}" },
+            { "key": "token", "value": "{{access_token}}" }
+          ]
+        },
+        "url": {
+          "raw": "{{keycloak_url}}/realms/{{realm}}/protocol/openid-connect/token/introspect",
+          "host": ["{{keycloak_url}}"],
+          "path": ["realms", "{{realm}}", "protocol", "openid-connect", "token", "introspect"]
+        },
+        "description": "Vérifie la validité d'un token (RFC 7662). Renvoie active=true si le token est valide."
+      }
+    },
+    {
+      "name": "4. Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "client_id", "value": "{{client_id}}" },
+            { "key": "client_secret", "value": "{{client_secret}}" },
+            { "key": "refresh_token", "value": "{{refresh_token}}" }
+          ]
+        },
+        "url": {
+          "raw": "{{keycloak_url}}/realms/{{realm}}/protocol/openid-connect/logout",
+          "host": ["{{keycloak_url}}"],
+          "path": ["realms", "{{realm}}", "protocol", "openid-connect", "logout"]
+        },
+        "description": "Invalide la session côté Keycloak."
+      }
+    }
+  ]
+}
