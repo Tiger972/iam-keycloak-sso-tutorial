@@ -25,7 +25,7 @@ docker compose logs -f keycloak    # suivre le démarrage
 
 Patientez ~30 secondes que Keycloak finisse de démarrer, puis ouvrez : <http://localhost:8080>.
 
-📸 **Screenshot à prendre :** `01-keycloak-welcome.png` — page d'accueil Keycloak
+![page d'accueil Keycloak](screenshots/01-keycloak-welcome.png)
 
 ---
 
@@ -34,8 +34,8 @@ Patientez ~30 secondes que Keycloak finisse de démarrer, puis ouvrez : <http://
 1. Cliquer sur **Administration Console**
 2. Saisir les identifiants `admin` / `admin`
 
-📸 **Screenshot à prendre :** `02-keycloak-admin-login.png` — écran de login admin
-📸 **Screenshot à prendre :** `03-keycloak-admin-dashboard.png` — dashboard admin (realm `master`)
+![écran de login admin](screenshots/02-keycloak-admin-login.png)
+![dashboard admin (realm `master`)](screenshots/03-keycloak-admin-dashboard.png)
 
 ---
 
@@ -51,8 +51,8 @@ Plutôt que d'utiliser le realm `master` (réservé à l'administration de Keycl
    - **Enabled** : ✅ ON
 3. Cliquer sur **Create**
 
-📸 **Screenshot à prendre :** `04-create-realm.png` — formulaire de création du realm
-📸 **Screenshot à prendre :** `05-realm-created.png` — vue du realm `demo-realm` après création
+![formulaire de création du realm](screenshots/04-create-realm.png)
+![vue du realm `demo-realm` après création](screenshots/05-realm-created.png)
 
 ---
 
@@ -77,8 +77,8 @@ Plutôt que d'utiliser le realm `master` (réservé à l'administration de Keycl
    - **Temporary** : ❌ OFF (sinon Keycloak forcera un changement à la première connexion)
 3. Cliquer sur **Save** puis confirmer
 
-📸 **Screenshot à prendre :** `06-create-user.png` — formulaire de création de l'utilisateur
-📸 **Screenshot à prendre :** `07-set-password.png` — onglet Credentials avec le mot de passe défini
+![formulaire de création de l'utilisateur](screenshots/06-create-user.png)
+![onglet Credentials avec le mot de passe défini](screenshots/07-set-password.png)
 
 ---
 
@@ -112,10 +112,10 @@ Ce client utilisera le **Authorization Code Flow + PKCE**, le standard recommand
 3. **Proof Key for Code Exchange Code Challenge Method** : `S256`
 4. **Save**
 
-📸 **Screenshot à prendre :** `08-client-react-spa-general.png` — General settings
-📸 **Screenshot à prendre :** `09-client-react-spa-capability.png` — Capability config
-📸 **Screenshot à prendre :** `10-client-react-spa-urls.png` — Login settings (URLs)
-📸 **Screenshot à prendre :** `11-client-react-spa-pkce.png` — Advanced settings (PKCE S256)
+![General settings](screenshots/08-client-react-spa-general.png)
+![Capability config](screenshots/09-client-react-spa-capability.png)
+![Login settings (URLs)](screenshots/10-client-react-spa-urls.png)
+![Advanced settings (PKCE S256)](screenshots/11-client-react-spa-pkce.png)
 
 ---
 
@@ -142,8 +142,8 @@ Ce client utilisera le **Resource Owner Password Credentials Grant** — uniquem
 1. Sur la page du client, onglet **Credentials**
 2. Copier la valeur **Client Secret** — on en aura besoin pour curl et Postman
 
-📸 **Screenshot à prendre :** `12-client-curl-capability.png` — Capability config (Direct access grants ON)
-📸 **Screenshot à prendre :** `13-client-curl-secret.png` — onglet Credentials avec le secret (✏️ tu peux flouter le secret avant de prendre la capture)
+![Capability config (Direct access grants ON)](screenshots/12-client-curl-capability.png)
+![onglet Credentials avec le secret (✏️ tu peux flouter le secret avant de prendre la capture)](screenshots/13-client-curl-secret.png)
 
 ---
 

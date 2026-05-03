@@ -29,7 +29,7 @@ Chaque partie est encodée en **Base64URL**.
 3. Coller le token dans la zone **Encoded**
 4. Le site affiche automatiquement le **Header** et le **Payload** décodés
 
-📸 **Screenshot à prendre :** `20-jwt-io-decoded.png` — token collé sur jwt.io avec header et payload visibles
+![token collé sur jwt.io avec header et payload visibles](screenshots/20-jwt-io-decoded.png)
 
 ---
 
@@ -144,7 +144,7 @@ verify(signature, base64url(header) + "." + base64url(payload), clé_publique_ke
 
 > ⚠️ **Erreur fréquente** : ne jamais faire confiance au contenu d'un JWT sans **vérifier sa signature**. Le payload est en Base64, pas chiffré : tout le monde peut le lire, mais seul le détenteur de la clé privée peut le générer/modifier valablement.
 
-📸 **Screenshot à prendre :** `21-jwt-io-signature.png` — partie signature sur jwt.io (avec ou sans clé publique chargée pour montrer la vérification)
+![partie signature sur jwt.io (avec ou sans clé publique chargée pour montrer la vérification)](screenshots/21-jwt-io-signature.png)
 
 ---
 

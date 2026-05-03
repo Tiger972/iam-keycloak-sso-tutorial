@@ -57,7 +57,7 @@ TOKEN=$(curl -s -X POST \
 echo $TOKEN
 ```
 
-📸 **Screenshot à prendre :** `14-curl-token-request.png` — terminal avec la commande curl et la réponse JSON
+![terminal avec la commande curl et la réponse JSON](screenshots/14-curl-token-request.png)
 
 ---
 
@@ -69,7 +69,7 @@ echo $TOKEN
 2. **File** → **Import** → sélectionner `postman/keycloak-jwt.postman_collection.json`
 3. La collection **"Keycloak JWT - IAM M1-CSM 2026"** apparaît
 
-📸 **Screenshot à prendre :** `15-postman-import.png` — collection importée
+![collection importée](screenshots/15-postman-import.png)
 
 ### Configurer les variables
 
@@ -83,7 +83,7 @@ echo $TOKEN
    - `password` : `Test1234!`
 3. **Save**
 
-📸 **Screenshot à prendre :** `16-postman-variables.png` — variables configurées
+![variables configurées](screenshots/16-postman-variables.png)
 
 ### Exécuter "1. Get JWT (Password Grant)"
 
@@ -92,7 +92,7 @@ echo $TOKEN
 3. Cliquer **Send**
 4. Le JWT apparaît dans la réponse, et le script de test stocke automatiquement `access_token` dans la variable de collection
 
-📸 **Screenshot à prendre :** `17-postman-token-response.png` — réponse contenant l'access_token
+![réponse contenant l'access_token](screenshots/17-postman-token-response.png)
 
 ### Bonus — UserInfo et Introspection
 
@@ -102,7 +102,7 @@ La collection inclut aussi :
 - **3. Token Introspection** : vérifie la validité d'un token (RFC 7662)
 - **4. Logout** : invalide la session
 
-📸 **Screenshot à prendre :** `18-postman-userinfo.png` — réponse de /userinfo
+![réponse de /userinfo](screenshots/18-postman-userinfo.png)
 
 ---
 

@@ -121,7 +121,7 @@ npm run dev
 
 L'app est accessible sur <http://localhost:5173>.
 
-📸 **Screenshot à prendre :** `22-spa-home-not-logged.png` — page d'accueil avec bouton "Se connecter via Keycloak"
+![page d'accueil avec bouton "Se connecter via Keycloak"](screenshots/22-spa-home-not-logged.png)
 
 ---
 
@@ -134,10 +134,10 @@ L'app est accessible sur <http://localhost:5173>.
 5. `keycloak-js` échange le `code` + `code_verifier` contre un **access token** (sans secret, grâce à PKCE)
 6. La SPA récupère et affiche le payload décodé
 
-📸 **Screenshot à prendre :** `23-keycloak-login-page.png` — page de login Keycloak après redirection
-📸 **Screenshot à prendre :** `24-spa-logged-in-token.png` — SPA après login, avec le token affiché
-📸 **Screenshot à prendre :** `25-spa-jwt-table.png` — tableau HTML avec le payload décodé
-📸 **Screenshot à prendre :** `26-spa-network-tokens.png` — onglet **Network** du navigateur montrant l'échange de tokens (bonus sécu)
+![page de login Keycloak après redirection](screenshots/23-keycloak-login-page.png)
+![SPA après login, avec le token affiché](screenshots/24-spa-logged-in-token.png)
+![tableau HTML avec le payload décodé](screenshots/25-spa-jwt-table.png)
+![onglet **Network** du navigateur montrant l'échange de tokens (bonus sécu)](screenshots/26-spa-network-tokens.png)
 
 ---
 
